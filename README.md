@@ -1,5 +1,3 @@
-# README.md
-
 # Quick Extractor
 
 A powerful Chrome extension to extract URLs, JavaScript files and JSON data from web pages.
