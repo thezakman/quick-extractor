@@ -76,17 +76,19 @@ header {
 }
 
 h1 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    font-size: 34px;
+    font-family: "Big Shoulders", sans-serif;
+    font-size: 44px;
     margin: 0;
     color: var(--text-dark);
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #333333, #000000);
+    background: linear-gradient(135deg, #878787, #c2c2c2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.08);
+    /*font-style: italic;*/
     position: relative;
+    line-height: 40px;
 }
 
 /* Botões com efeitos melhorados */
@@ -338,6 +340,54 @@ footer {
     text-align: center;
 }
 
+footer a {
+    color: #6f85b5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-default);
+    padding: 2px 6px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.footer a:hover {
+    color: #171717;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.bug {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.bug:hover {
+    transform: scale(1.1) rotate(10deg);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    background: white;
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.bug:active {
+    transform: scale(0.95);
+}
+
 .author {
     font-size: 12px;
     color: var(--text-secondary);
@@ -361,33 +411,19 @@ footer {
 }
 
 .author a {
-    color: #2563eb;
+    color: #6f85b5;
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition-default);
     padding: 2px 6px;
     border-radius: 4px;
-    background: rgba(37, 99, 235, 0.08);
     position: relative;
     overflow: hidden;
 }
 
-.author a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
 
 .author a:hover {
-    color: #1e40af;
-    background: rgba(37, 99, 235, 0.12);
+    color: #171717;
 }
 
 .author a:hover::before {
@@ -401,6 +437,7 @@ footer {
     color: var(--text-secondary);
     background: var(--background-secondary);
     padding: 4px 8px;
+    display: inline-block;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
 }

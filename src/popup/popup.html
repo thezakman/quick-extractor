@@ -5,51 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="popup.css">
     <title>Quick Extractor</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Quick Extractor</h1>
-            <img class="img-logo" src="../../icons/icon128.png"></img>
+            <h1>QUICK EXTRACTOR</h1>
+            <img class="img-logo" src="../../icons/icon128.png" alt="Quick Extractor Logo">
+            <div class="status-badge" id="status-indicator"></div>
         </header>
         
         <main>
             <div class="button-group">
-                <button id="export-all" class="btn urls">
+                <button id="export-all" class="btn urls" title="Extrair todas as URLs da página">
                     <span class="icon">🌐</span>
                     <span class="text">Todas as URLs</span>
+                    <span class="badge" id="urls-count">0</span>
                 </button>
-                <button id="export-js" class="btn javascript">
+                <button id="export-js" class="btn javascript" title="Extrair arquivos JavaScript">
                     <span class="icon">📜</span>
                     <span class="text">JavaScript</span>
+                    <span class="badge" id="js-count">0</span>
                 </button>
-                <button id="export-json" class="btn json">
+                <button id="export-json" class="btn json" title="Extrair dados JSON">
                     <span class="icon">🗃️</span>
                     <span class="text">JSON</span>
+                    <span class="badge" id="json-count">0</span>
                 </button>
             </div>
 
             <div id="result-container" style="display: none;">
-                <div class="url-list" id="output"></div>
+                <div class="result-stats">
+                    <div class="stats-row">
+                        <span id="total-items" title="Total de itens encontrados">0 itens</span>
+                        <span id="extraction-time" title="Tempo de extração">0ms</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="url-list" id="output">
+                    <div class="empty-state" id="empty-state">
+                        Selecione um tipo de extração acima
+                    </div>
+                </div>
+
                 <div class="actions">
-                    <button id="copy-clipboard" class="btn action">
+                    <button id="copy-clipboard" class="btn action" title="Copiar para área de transferência (⌘+C)">
                         <span class="icon">📋</span>
                         <span class="text">Copiar</span>
                     </button>
-                    <button id="download-txt" class="btn action">
+                    <button id="download-txt" class="btn action" title="Baixar como arquivo de texto (⌘+S)">
                         <span class="icon">💾</span>
                         <span class="text">Baixar</span>
-                    </button>        
+                    </button>
+                    <button id="clear-results" class="btn action" title="Limpar resultados (⌘+D)">
+                        <span class="icon">🗑️</span>
+                        <span class="text">Limpar</span>
+                    </button>
                 </div>
             </div>
         </main>
 
         <footer>
-            <span class="author"><a href="https://github.com/thezakman">@TheZakMan</a></span>
-            <span class="version">v0.2</span>
+            <div class="footer-left">
+                <span class="author">
+                    <a href="https://github.com/thezakman" target="_blank" rel="noopener noreferrer">@TheZakMan</a>
+                </span>
+            </div>
+            <div class="footer-right">
+                <a class="bug" href="https://github.com/thezakman/quick-extractor/issues" target="_blank" rel="noopener noreferrer" class="report-bug" title="Reportar um problema">
+                    🐛
+                </a>
+                <span class="version">v0.2</span>
+             </div>
         </footer>
     </div>
     <script src="popup.js"></script>
