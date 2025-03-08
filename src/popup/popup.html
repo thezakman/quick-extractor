@@ -22,28 +22,23 @@
                 <button id="export-all" class="btn urls" title="Extrair todas as URLs da página">
                     <span class="icon">🌐</span>
                     <span class="text">Todas as URLs</span>
-                    <span class="badge" id="urls-count">0</span>
                 </button>
                 <button id="export-js" class="btn javascript" title="Extrair arquivos JavaScript">
                     <span class="icon">📜</span>
                     <span class="text">JavaScript</span>
-                    <span class="badge" id="js-count">0</span>
                 </button>
                 <button id="export-json" class="btn json" title="Extrair dados JSON">
                     <span class="icon">🗃️</span>
                     <span class="text">JSON</span>
-                    <span class="badge" id="json-count">0</span>
                 </button>
             </div>
 
             <div id="result-container" style="display: none;">
                 <div class="result-stats">
+                    <span class="stats-title">📊 Results:</span>
                     <div class="stats-row">
-                        <span id="total-items" title="Total de itens encontrados">0 itens</span>
-                        <span id="extraction-time" title="Tempo de extração">0ms</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div id="progress" style="width: 0%"></div>
+                        <span id="total-items">0 items</span>
+                        <span id="extraction-time">0ms</span>
                     </div>
                 </div>
                 
@@ -62,10 +57,6 @@
                         <span class="icon">💾</span>
                         <span class="text">Baixar</span>
                     </button>
-                    <button id="clear-results" class="btn action" title="Limpar resultados (⌘+D)">
-                        <span class="icon">🗑️</span>
-                        <span class="text">Limpar</span>
-                    </button>
                 </div>
             </div>
         </main>
@@ -80,7 +71,7 @@
                 <a class="bug" href="https://github.com/thezakman/quick-extractor/issues" target="_blank" rel="noopener noreferrer" class="report-bug" title="Reportar um problema">
                     🐛
                 </a>
-                <span class="version">v0.2</span>
+                <span class="version">v0.3</span>
              </div>
         </footer>
     </div>

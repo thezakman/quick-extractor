@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Função para extrair URLs
     const extractUrls = async (action) => {
+        const startTime = performance.now();
+        
         try {
             const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
             if (!tab) {
@@ -43,11 +45,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await chrome.tabs.sendMessage(tab.id, { action });
             console.log('📥 Resposta recebida:', response);
             
+            const endTime = performance.now();
+            const timeMs = Math.round(endTime - startTime);
+            
             if (response?.urls) {
+                updateStats(response.urls.length, timeMs);
                 updateUI(response.urls);
+            } else {
+                updateStats(0, timeMs);
+                updateUI([]);
             }
         } catch (error) {
             console.error('❌ Erro:', error);
+            updateStats(0, 0);
             updateUI([]);
         }
     };
@@ -100,3 +110,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         chrome.tabs.create({ url: url });
     });
 });
+
+function updateStats(itemCount, timeMs) {
+    const totalItems = document.getElementById('total-items');
+    const extractionTime = document.getElementById('extraction-time');
+    
+    totalItems.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'itens'}`;
+    extractionTime.textContent = `${timeMs}ms`;
+}
+
+// Exemplo de uso na função de extração:
+async function extractUrls() {
+    const startTime = performance.now();
+    
+    // ... código de extração ...
+    
+    const endTime = performance.now();
+    const timeMs = Math.round(endTime - startTime);
+    
+    updateStats(urls.length, timeMs);
+}
