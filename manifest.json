@@ -1,29 +1,31 @@
 {
   "manifest_version": 3,
   "name": "Quick Extractor",
-  "version": "0.1",
-  "description": "Extrai URLs de JavaScript e JSON de páginas web",
+  "version": "0.3",
+  "description": "Extract URLs, JavaScript files and JSON data from web pages",
   "permissions": [
     "activeTab",
-    "scripting",
-    "clipboardWrite",
-    "tabs"
+    "scripting"
   ],
   "host_permissions": [
     "<all_urls>"
   ],
   "action": {
-    "default_popup": "src/popup/popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["src/content/content.js"],
-      "run_at": "document_end"
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
-  ],
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
   "icons": {
+    "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "author": "TheZakMan",
+  "homepage_url": "https://github.com/thezakman/quick-extractor"
 }

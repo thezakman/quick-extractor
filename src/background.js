@@ -1,35 +1,35 @@
-// Este arquivo contém o script de fundo para a extensão Chrome. 
-// Ele gerencia eventos e lida com a comunicação entre o popup e os scripts de conteúdo.
+// This file contains the background script for the Chrome extension.
+// It manages events and handles communication between popup and content scripts.
 
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('🚀 Extensão instalada e pronta!');
+    console.log('🚀 Extension installed and ready!');
 });
 
-// Gerencia as mensagens entre popup e content script
+// Manages messages between popup and content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log('📨 Mensagem recebida no background:', request);
+    console.log('📨 Message received in background:', request);
 
     if (request.action === 'getJavaScriptUrls' || request.action === 'getJsonUrls') {
-        console.log('🔍 Procurando URLs na aba atual...');
+        console.log('🔍 Searching URLs in current tab...');
         
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             if (!tabs[0]?.id) {
-                console.error('❌ Nenhuma aba ativa encontrada');
-                sendResponse({ error: 'Nenhuma aba ativa' });
+                console.error('❌ No active tab found');
+                sendResponse({ error: 'No active tab' });
                 return;
             }
 
             chrome.tabs.sendMessage(tabs[0].id, request, (response) => {
-                console.log('✅ URLs encontradas:', response);
+                console.log('✅ URLs found:', response);
                 sendResponse(response);
             });
         });
         
-        return true; // Mantém a conexão aberta para resposta assíncrona
+        return true; // Keeps connection open for async response
     }
 });
 
-// Adiciona listener para mudanças de aba
+// Add listener for tab changes
 chrome.tabs.onActivated.addListener((activeInfo) => {
-    console.log('🔄 Mudança de aba detectada:', activeInfo.tabId);
+    console.log('🔄 Tab change detected:', activeInfo.tabId);
 });

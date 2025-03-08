@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('🚀 Popup inicializado');
+    console.log('🚀 Popup initialized');
 
-    // Elementos DOM
+    // DOM Elements
     const exportJsButton = document.getElementById('export-js');
     const exportJsonButton = document.getElementById('export-json');
     const copyButton = document.getElementById('copy-clipboard');
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let currentUrls = [];
 
-    // Verifica se os elementos foram encontrados
-    console.log('🔍 Elementos encontrados:', {
+    // Check if elements were found
+    console.log('🔍 Elements found:', {
         exportJsButton: !!exportJsButton,
         exportJsonButton: !!exportJsonButton,
         copyButton: !!copyButton,
@@ -23,27 +23,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         exportAllButton: !!exportAllButton
     });
 
-    // Função para extrair URLs
+    // Function to extract URLs
     const extractUrls = async (action) => {
         const startTime = performance.now();
         
         try {
             const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
             if (!tab) {
-                throw new Error('Nenhuma aba ativa encontrada');
+                throw new Error('No active tab found');
             }
 
-            console.log('📤 Enviando mensagem para tab:', tab.id);
+            console.log('📤 Sending message to tab:', tab.id);
             
-            // Injeta o content script primeiro
+            // Inject content script first
             await chrome.scripting.executeScript({
                 target: { tabId: tab.id },
                 files: ['src/content/content.js']
             });
 
-            // Agora envia a mensagem
+            // Now send the message
             const response = await chrome.tabs.sendMessage(tab.id, { action });
-            console.log('📥 Resposta recebida:', response);
+            console.log('📥 Response received:', response);
             
             const endTime = performance.now();
             const timeMs = Math.round(endTime - startTime);
@@ -56,13 +56,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 updateUI([]);
             }
         } catch (error) {
-            console.error('❌ Erro:', error);
+            console.error('❌ Error:', error);
             updateStats(0, 0);
             updateUI([]);
         }
     };
 
-    // Função para atualizar UI
+    // Function to update UI
     const updateUI = (urls) => {
         currentUrls = urls;
         if (!resultContainer || !output) return;
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             output.innerHTML = urls.map(url => `<div class="url-item">${url}</div>`).join('');
             resultContainer.style.display = 'block';
         } else {
-            output.innerHTML = '<div class="url-item">Nenhuma URL encontrada</div>';
+            output.innerHTML = '<div class="url-item">No URLs found</div>';
             resultContainer.style.display = 'block';
         }
     };
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     copyButton?.addEventListener('click', () => {
         if (currentUrls.length > 0) {
             navigator.clipboard.writeText(currentUrls.join('\n'))
-                .then(() => alert('URLs copiadas!'))
-                .catch(err => console.error('Erro ao copiar:', err));
+                .then(() => alert('URLs copied!'))
+                .catch(err => console.error('Error copying:', err));
         }
     });
 
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Adiciona evento para abrir links externos
+    // Add event to open external links
     document.querySelector('.author a').addEventListener('click', (e) => {
         e.preventDefault();
         const url = e.target.href;
@@ -115,18 +115,6 @@ function updateStats(itemCount, timeMs) {
     const totalItems = document.getElementById('total-items');
     const extractionTime = document.getElementById('extraction-time');
     
-    totalItems.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'itens'}`;
+    totalItems.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
     extractionTime.textContent = `${timeMs}ms`;
-}
-
-// Exemplo de uso na função de extração:
-async function extractUrls() {
-    const startTime = performance.now();
-    
-    // ... código de extração ...
-    
-    const endTime = performance.now();
-    const timeMs = Math.round(endTime - startTime);
-    
-    updateStats(urls.length, timeMs);
 }

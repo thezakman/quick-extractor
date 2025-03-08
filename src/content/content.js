@@ -1,23 +1,23 @@
-// No início do content.js
+// Content script initialization
 console.log('🔧 Debug - Window location:', window.location.href);
 console.log('🔧 Debug - Document ready state:', document.readyState);
-console.log('🚀 Content script carregado');
+console.log('🚀 Content script loaded');
 
 function getAllJavaScriptUrls() {
-    console.log('🔍 Buscando URLs JavaScript...');
+    console.log('🔍 Searching for JavaScript URLs...');
     const urls = new Set();
     
-    // Busca em tags script
+    // Search in script tags
     document.querySelectorAll('script[src]').forEach(script => {
         if (script.src) urls.add(script.src);
     });
     
-    // Busca em links
+    // Search in link tags
     document.querySelectorAll('link[href]').forEach(link => {
         if (link.href?.endsWith('.js')) urls.add(link.href);
     });
     
-    // Busca em outros atributos (melhorado)
+    // Search in other attributes (improved)
     document.querySelectorAll('*').forEach(element => {
         ['src', 'href', 'data-src'].forEach(attr => {
             const value = element.getAttribute(attr);
@@ -34,15 +34,15 @@ function getAllJavaScriptUrls() {
         });
     });
 
-    console.log('✅ URLs JavaScript encontradas:', urls.size);
+    console.log('✅ JavaScript URLs found:', urls.size);
     return Array.from(urls);
 }
 
 function getAllJsonUrls() {
-    console.log('🔍 Buscando URLs JSON...');
+    console.log('🔍 Searching for JSON URLs...');
     const urls = new Set();
     
-    // Busca em links e outros elementos
+    // Search in links and other elements
     document.querySelectorAll('*').forEach(element => {
         ['src', 'href', 'data-src'].forEach(attr => {
             const value = element.getAttribute(attr);
@@ -59,15 +59,15 @@ function getAllJsonUrls() {
         });
     });
 
-    console.log('✅ URLs JSON encontradas:', urls.size);
+    console.log('✅ JSON URLs found:', urls.size);
     return Array.from(urls);
 }
 
 function getAllUrls() {
-    console.log('🔍 Buscando todas as URLs...');
+    console.log('🔍 Searching for all URLs...');
     const urls = new Set();
     
-    // Busca em todos os elementos com href ou src
+    // Search in all elements with href or src
     document.querySelectorAll('*').forEach(element => {
         ['src', 'href', 'data-src'].forEach(attr => {
             const value = element.getAttribute(attr);
@@ -84,13 +84,13 @@ function getAllUrls() {
         });
     });
 
-    console.log('✅ URLs encontradas:', urls.size);
+    console.log('✅ URLs found:', urls.size);
     return Array.from(urls);
 }
 
-// Listener para mensagens (corrigido)
+// Message listener
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log('📨 Mensagem recebida:', request);
+    console.log('📨 Message received:', request);
     
     try {
         if (request.action === "getJavaScriptUrls") {
@@ -103,11 +103,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             sendResponse({urls: getAllUrls()});
         }
     } catch (error) {
-        console.error('❌ Erro:', error);
+        console.error('❌ Error:', error);
         sendResponse({error: error.message});
     }
     
     return true;
 });
 
-console.log('✅ Content script inicializado e pronto');
+console.log('✅ Content script initialized and ready');
