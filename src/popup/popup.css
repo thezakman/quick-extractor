@@ -1,0 +1,631 @@
+/* Variáveis CSS com paleta de cores modernizada e ampliada */
+:root {
+    --primary-gradient: linear-gradient(135deg, #2563eb, #1e40af);
+    --secondary-gradient: linear-gradient(135deg, #059669, #10b981);
+    --danger-gradient: linear-gradient(135deg, #dc2626, #ef4444);
+    --neutral-gradient: linear-gradient(135deg, #475569, #64748b);
+    --text-primary: #334155;
+    --text-secondary: #64748b;
+    --text-dark: #0f172a;
+    --background: #ffffff;
+    --background-secondary: #f8fafc;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition-default: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}
+
+/* Reset e base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 360px;
+    height: 500px;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--spacing-md);
+    gap: var(--spacing-lg);
+}
+
+/* Header com animação sutil */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+}
+
+.img-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.img-logo img {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: var(--transition-default);
+}
+
+.img-logo:hover img {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 34px;
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #333333, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+/* Botões com efeitos melhorados */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 9px var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-default);
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    letter-spacing: -0.3px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 0.5s, opacity 0.3s;
+}
+
+.btn:active::after {
+    transform: scale(20) translate(-50%, -50%);
+    opacity: 0.3;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+.btn .icon {
+    flex-shrink: 0;
+    font-size: 20px;
+    margin-right: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.btn:hover .icon {
+    transform: scale(1.15) rotate(5deg);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.btn .text {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+/* Estilos específicos de botões */
+.btn.urls {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn.javascript {
+    background: var(--secondary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn.json {
+    background: var(--danger-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn.action {
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 14px;
+    font-size: 13px;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn[disabled] {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none !important;
+    filter: grayscale(30%);
+}
+
+/* Lista de URLs com design melhorado */
+.url-list {
+    flex: 1;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #f1f5f9;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(37, 99, 235, 0.2) rgba(0, 0, 0, 0.05);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+.url-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(to bottom, rgba(241, 245, 249, 1), rgba(241, 245, 249, 0));
+    pointer-events: none;
+    z-index: 1;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.url-list::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(to top, rgba(241, 245, 249, 1), rgba(241, 245, 249, 0));
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.url-item {
+    font-size: 11px;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    background: white;
+    margin-bottom: 8px;
+    word-break: break-all;
+    border: 1px solid var(--border-color);
+    transition: var(--transition-default);
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.url-item:hover {
+    background: var(--background-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.url-item:active {
+    transform: translateY(0);
+}
+
+.url-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    transition: box-shadow 0.2s ease;
+}
+
+.url-item:focus-visible::after {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
+}
+
+/* Layout do container de resultados */
+#result-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 180px);
+    border-top: 2px solid var(--border-color);
+    padding-top: var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+    position: relative;
+}
+
+#result-container::before {
+    content: 'Resultados:';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--background);
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Rodapé e créditos com mais estilo */
+footer {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.author {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.author::before {
+    content: '♥';
+    color: #ef4444;
+    font-size: 14px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.author a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-default);
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(37, 99, 235, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.author a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.author a:hover {
+    color: #1e40af;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+.author a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.version {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--background-secondary);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+/* Botões de ação na parte inferior */
+.actions {
+    position: sticky;
+    bottom: 0;
+    background: var(--background);
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+/* Scrollbar personalizada mais atrativa */
+.url-list::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.url-list::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    margin: 4px;
+}
+
+.url-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(29, 78, 216, 0.3));
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.url-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.6), rgba(29, 78, 216, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.url-list::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Animação para feedback ao clicar em itens */
+@keyframes clickFeedback {
+    0% { background-color: rgba(37, 99, 235, 0.1); }
+    100% { background-color: white; }
+}
+
+.url-item.clicked {
+    animation: clickFeedback 0.5s;
+}
+
+/* Responsividade e acessibilidade */
+@media (hover: none) {
+    .btn:hover {
+        transform: none;
+    }
+    
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .url-item:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Estados de carregamento */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    border-radius: inherit;
+    z-index: 10;
+}
+
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    z-index: 20;
+}
+
+.loading-spinner::before,
+.loading-spinner::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.loading-spinner::before {
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(37, 99, 235, 0.15);
+    border-top-color: #2563eb;
+    animation: spin 1s linear infinite;
+}
+
+.loading-spinner::after {
+    width: 82%;
+    height: 82%;
+    border: 3px solid transparent;
+    border-top-color: rgba(37, 99, 235, 0.7);
+    animation: spin 0.75s linear infinite reverse;
+}
+
+.btn.loading {
+    background-image: linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 50px 50px;
+    animation: loading-stripes 1s linear infinite;
+}
+
+.btn.loading .loading-spinner {
+    width: 16px;
+    height: 16px;
+    left: calc(50% - 8px);
+}
+
+.url-list.loading::before {
+    content: 'Carregando...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 30;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.33);
+    }
+    80%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes loading-stripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+.loading-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: #f6f7f8;
+}
+
+.loading-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-spinner,
+    .loading-spinner::before,
+    .loading-spinner::after,
+    .loading-shimmer::after,
+    .btn.loading {
+        animation: none;
+    }
+    
+    .loading::after {
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.9);
+    }
+}

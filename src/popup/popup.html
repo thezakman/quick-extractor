@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+    <title>Quick Extractor</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quick Extractor</h1>
+            <img class="img-logo" src="../../icons/icon128.png"></img>
+        </header>
+        
+        <main>
+            <div class="button-group">
+                <button id="export-all" class="btn urls">
+                    <span class="icon">🌐</span>
+                    <span class="text">Todas as URLs</span>
+                </button>
+                <button id="export-js" class="btn javascript">
+                    <span class="icon">📜</span>
+                    <span class="text">JavaScript</span>
+                </button>
+                <button id="export-json" class="btn json">
+                    <span class="icon">🗃️</span>
+                    <span class="text">JSON</span>
+                </button>
+            </div>
+
+            <div id="result-container" style="display: none;">
+                <div class="url-list" id="output"></div>
+                <div class="actions">
+                    <button id="copy-clipboard" class="btn action">
+                        <span class="icon">📋</span>
+                        <span class="text">Copiar</span>
+                    </button>
+                    <button id="download-txt" class="btn action">
+                        <span class="icon">💾</span>
+                        <span class="text">Baixar</span>
+                    </button>        
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <span class="author"><a href="https://github.com/thezakman">@TheZakMan</a></span>
+            <span class="version">v0.2</span>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
