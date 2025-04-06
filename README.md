@@ -1,6 +1,6 @@
 # Quick Extractor
 
-<img src=.icons/logo.png>
+<img src=icons/logo.png>
 
 A powerful Chrome extension to extract URLs, JavaScript files and JSON data from web pages.
 
