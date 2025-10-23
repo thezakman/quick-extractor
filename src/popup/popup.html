@@ -14,7 +14,6 @@
         <header>
             <h1>QUICK EXTRACTOR</h1>
             <img class="img-logo" src="../../icons/icon128.png" alt="Quick Extractor Logo">
-            <div class="status-badge" id="status-indicator"></div>
         </header>
         
         <main>
@@ -34,6 +33,29 @@
             </div>
 
             <div id="result-container" style="display: none;">
+                <!-- Search and Filter Bar -->
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="🔍 Search URLs... (⌘+K)"
+                        class="search-input"
+                    >
+                    <button id="clear-results" class="btn-clear" title="Clear all results">
+                        🗑️
+                    </button>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all" title="Show all URLs">All</button>
+                    <button class="filter-btn" data-filter="images" title="Images only">🖼️</button>
+                    <button class="filter-btn" data-filter="scripts" title="Scripts only">📜</button>
+                    <button class="filter-btn" data-filter="styles" title="Styles only">🎨</button>
+                    <button class="filter-btn" data-filter="media" title="Media only">🎬</button>
+                    <button class="filter-btn" data-filter="api" title="API endpoints">🔌</button>
+                </div>
+
                 <div class="result-stats">
                     <span class="stats-title">📊 Results:</span>
                     <div class="stats-row">
@@ -41,7 +63,7 @@
                         <span id="extraction-time">0ms</span>
                     </div>
                 </div>
-                
+
                 <div class="url-list" id="output">
                     <div class="empty-state" id="empty-state">
                         Select an extraction type above
@@ -49,14 +71,26 @@
                 </div>
 
                 <div class="actions">
-                    <button id="copy-clipboard" class="btn action" title="Copy to clipboard (⌘+C)">
-                        <span class="icon">📋</span>
-                        <span class="text">Copy</span>
-                    </button>
-                    <button id="download-txt" class="btn action" title="Download as text file (⌘+S)">
-                        <span class="icon">💾</span>
-                        <span class="text">Download</span>
-                    </button>
+                    <div class="actions-row">
+                        <button id="copy-clipboard" class="btn action" title="Copy to clipboard (⌘+C)">
+                            <span class="icon">📋</span>
+                            <span class="text">Copy</span>
+                        </button>
+                        <button id="download-txt" class="btn action" title="Download as text file (⌘+S)">
+                            <span class="icon">💾</span>
+                            <span class="text">TXT</span>
+                        </button>
+                    </div>
+                    <div class="actions-row">
+                        <button id="export-json-format" class="btn action export" title="Export as JSON">
+                            <span class="icon">{ }</span>
+                            <span class="text">JSON</span>
+                        </button>
+                        <button id="export-csv-format" class="btn action export" title="Export as CSV">
+                            <span class="icon">📊</span>
+                            <span class="text">CSV</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -68,10 +102,11 @@
                 </span>
             </div>
             <div class="footer-right">
-                <a class="bug" href="https://github.com/thezakman/quick-extractor/issues" target="_blank" rel="noopener noreferrer" class="report-bug" title="Report an issue">
+                <button id="theme-toggle" class="icon-btn" title="Toggle dark mode (⌘+D)">🌙</button>
+                <a class="icon-btn bug" href="https://github.com/thezakman/quick-extractor/issues" target="_blank" rel="noopener noreferrer" title="Report an issue">
                     🐛
                 </a>
-                <span class="version">v0.4</span>
+                <span class="version">v0.6.3</span>
              </div>
         </footer>
     </div>

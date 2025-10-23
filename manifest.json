@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Quick Extractor",
-  "version": "0.3",
-  "description": "Extract URLs, JavaScript files and JSON data from web pages",
+  "version": "0.6.3",
+  "description": "Extract, filter, and export URLs with persistent storage, dark mode, and advanced filtering",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
