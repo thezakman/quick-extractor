@@ -32,9 +32,8 @@ git clone https://github.com/thezakman/quick-extractor.git
    - **JavaScript**: .js files and scripts
    - **JSON**: Data in JSON format
 3. Use buttons to:
-   - 📋 Copy to clipboard
-   - 💾 Download as text file
-   - 🗑️ Clear results
+   - 📋 Copy to clipboard (⌘+C)
+   - 💾 Download as text file (⌘+S)
 
 ## 🛠️ Project Structure
 
@@ -68,6 +67,26 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## 🐛 Bugs and Suggestions
 
 Found a bug or have a suggestion? [Open an issue](https://github.com/thezakman/quick-extractor/issues)
+
+## 🚀 Release Notes v0.3
+
+### New Features
+- JavaScript file extraction
+- JSON data extraction
+- Enhanced URL detection
+- Copy to clipboard with shortcuts
+- Download results as text file
+- Results counter and extraction time
+
+### Improvements
+- Smart duplicate URL filtering
+- Better error handling
+- Enhanced UI feedback
+- Performance optimizations
+- Memory usage improvements
+
+### 📦 Download
+- [quick-extractor-v0.3.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.3/quick-extractor.zip)
 
 ---
 Made with ♥ by [@TheZakMan](https://github.com/thezakman)

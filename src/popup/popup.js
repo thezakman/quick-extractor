@@ -68,10 +68,39 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!resultContainer || !output) return;
 
         if (urls && urls.length > 0) {
-            output.innerHTML = urls.map(url => `<div class="url-item">${url}</div>`).join('');
+            output.innerHTML = urls.map(url => `
+                <div class="url-item" title="Click to copy" data-url="${url}">
+                    ${url}
+                </div>
+            `).join('');
+            
+            // Add click handlers for each URL item
+            document.querySelectorAll('.url-item').forEach(item => {
+                item.addEventListener('click', async () => {
+                    const url = item.dataset.url;
+                    
+                    try {
+                        item.classList.add('copying');
+                        await navigator.clipboard.writeText(url);
+                        
+                        item.classList.remove('copying');
+                        item.classList.add('copied');
+                        
+                        // Reset state after animation
+                        setTimeout(() => {
+                            item.classList.remove('copied');
+                        }, 2000);
+                        
+                    } catch (error) {
+                        console.error('❌ Copy failed:', error);
+                        item.classList.remove('copying');
+                    }
+                });
+            });
+            
             resultContainer.style.display = 'block';
         } else {
-            output.innerHTML = '<div class="url-item">No URLs found</div>';
+            output.innerHTML = '<div class="empty-state">No URLs found</div>';
             resultContainer.style.display = 'block';
         }
     };
@@ -111,10 +140,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
+// Update stats function
 function updateStats(itemCount, timeMs) {
     const totalItems = document.getElementById('total-items');
     const extractionTime = document.getElementById('extraction-time');
     
-    totalItems.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
-    extractionTime.textContent = `${timeMs}ms`;
+    if (totalItems && extractionTime) {
+        totalItems.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
+        extractionTime.textContent = `${timeMs}ms`;
+        
+        // Add animation class
+        totalItems.classList.add('highlight');
+        extractionTime.classList.add('highlight');
+        
+        // Remove animation class after transition
+        setTimeout(() => {
+            totalItems.classList.remove('highlight');
+            extractionTime.classList.remove('highlight');
+        }, 1000);
+    }
 }

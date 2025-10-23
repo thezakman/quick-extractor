@@ -21,6 +21,8 @@
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
+    --success-gradient: linear-gradient(135deg, #059669, #10b981);
+    --copy-animation-duration: 0.2s;
 }
 
 /* Reset e base */
@@ -266,7 +268,7 @@ h1 {
     background: linear-gradient(to top, rgba(241, 245, 249, 1), rgba(241, 245, 249, 0));
     pointer-events: none;
     z-index: 1;
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    border-radius: 0 0 var(--radius-md) var (--radius-md);
 }
 
 .url-item {
@@ -280,7 +282,10 @@ h1 {
     transition: var(--transition-default);
     position: relative;
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .url-item:hover {
@@ -305,6 +310,68 @@ h1 {
 
 .url-item:focus-visible::after {
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
+}
+
+.url-item.copied {
+    background: var(--primary-gradient);
+    color: white;
+    transform: scale(1.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.url-item.copied::after {
+    content: '✓ Copied!';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    animation: fadeInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.url-item.copying {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.url-item.copying::after {
+    content: 'Copying...';
+    position: absolute;
+    right: 10px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.url-item:hover::before {
+    content: 'Click to copy';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Layout do container de resultados */
@@ -637,6 +704,26 @@ footer a {
     z-index: 30;
 }
 
+
+.highlight {
+    animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+    0% { 
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -699,5 +786,16 @@ footer a {
     .loading::after {
         backdrop-filter: none;
         background: rgba(255, 255, 255, 0.9);
+    }
+}
+
+@keyframes fadeInRight {
+    from { 
+        opacity: 0;
+        transform: translate(-10px, -50%);
+    }
+    to { 
+        opacity: 1;
+        transform: translate(0, -50%);
     }
 }
