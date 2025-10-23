@@ -365,13 +365,8 @@ Found a bug or have a suggestion? [Open an issue](https://github.com/thezakman/q
 - Memory usage improvements
 
 ### 📦 Downloads
-- [quick-extractor-v0.6.3.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6.3/quick-extractor.zip) ⭐ (Latest - Recommended)
-- [quick-extractor-v0.6.2.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6.2/quick-extractor.zip)
-- [quick-extractor-v0.6.1.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6.1/quick-extractor.zip)
-- [quick-extractor-v0.6.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6/quick-extractor.zip)
-- [quick-extractor-v0.5.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.5/quick-extractor.zip)
-- [quick-extractor-v0.4.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.4/quick-extractor.zip)
-- [quick-extractor-v0.3.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.3/quick-extractor.zip)
+- [quick-extractor-v0.6.3.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6.3/quick-extractor.zip) ⭐
+- [quick-extractor-v0.6.3.crx](https://github.com/thezakman/quick-extractor/releases/download/0.6.3/quick-extractor.crx)
 
 ## 📊 Feature Evolution
 
