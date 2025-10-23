@@ -365,7 +365,7 @@ Found a bug or have a suggestion? [Open an issue](https://github.com/thezakman/q
 - Memory usage improvements
 
 ### 📦 Downloads
-- [quick-extractor-v0.6.3.zip](https://github.com/thezakman/quick-extractor/releases/download/v0.6.3/quick-extractor.zip) ⭐
+- [quick-extractor-v0.6.3.zip](https://github.com/thezakman/quick-extractor/archive/refs/tags/0.6.3.zip) ⭐
 - [quick-extractor-v0.6.3.crx](https://github.com/thezakman/quick-extractor/releases/download/0.6.3/quick-extractor.crx)
 
 ## 📊 Feature Evolution
