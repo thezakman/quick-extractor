@@ -1,8 +1,9 @@
 # Quick Extractor
 
+![quick-extractor](icons/quick-extractor.png)
+
 A powerful and feature-rich Chrome extension to extract, filter, and export URLs from web pages with persistent session storage, advanced filtering, and multiple export formats.
 
-![quick-extractor](icons/quick-extractor.png)
 
 ## ✨ Features
 
